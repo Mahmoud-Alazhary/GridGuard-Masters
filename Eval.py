@@ -1,6 +1,5 @@
+from tensorflow import keras # ML platform
 import numpy as np # linear algebra
-import matplotlib.pyplot as plt # data visualization
-import keras # ML platform
 import os # operating system
 import joblib # save and load preprocessing scalers
 
@@ -9,9 +8,9 @@ __last24 = np.zeros((1,7,24))
 __last24[0] = np.load(os.getcwd() + r'\Models\last24hours.npy')
 
 # Load models
-__model1 = keras.saving.load_model(os.getcwd() + '\\Models\\model1.keras')
-__model2 = keras.saving.load_model(os.getcwd() + '\\Models\\model2.keras')
-__model3 = keras.saving.load_model(os.getcwd() + '\\Models\\model3.keras')
+__model1 = keras.models.load_model(os.getcwd() + '\\Models\\model1.keras')
+__model2 = keras.models.load_model(os.getcwd() + '\\Models\\model2.keras')
+__model3 = keras.models.load_model(os.getcwd() + '\\Models\\model3.keras')
 
 # Load scalers
 __scalers = []
@@ -40,8 +39,8 @@ def predict(model_number:int, inputs):
 			predicted[i] = __scalers[i].inverse_transform(predicted[i].reshape(-1, 1)).reshape(predicted.shape[1])
 		return predicted.transpose()
 
-#print(__last24[0].transpose())
-
+#Examples
+# print(__last24[0].transpose())
 print(predict(model_number=1, inputs=__last24))
 print(predict(model_number=2, inputs=__last24))
 
