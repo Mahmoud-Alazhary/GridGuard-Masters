@@ -1,15 +1,4 @@
-#pip3 install numpy
-#pip3 install scikit-learn
-#pip3 install pandas
-#pip3 install matplotlib
-#pip3 install keras
-#pip3 install joblib
-#pip3 install tensorflow
-
-import sklearn.preprocessing # for preprocessing
 import numpy as np # linear algebra
-import pandas as pd # data processing
-import matplotlib # data visualization
 import matplotlib.pyplot as plt # data visualization
 import keras # ML platform
 import os # operating system
