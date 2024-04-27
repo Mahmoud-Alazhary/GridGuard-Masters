@@ -6,9 +6,9 @@ class predictor:
         self.__last24_frame[0] = np.load(os.getcwd() + r'\Models\last24hours.npy')
         
         # Load models
-        self.__model1 = keras.saving.load_model(os.getcwd() + '\\Models\\model1.keras')
-        self.__model2 = keras.saving.load_model(os.getcwd() + '\\Models\\model2.keras')
-        self.__model3 = keras.saving.load_model(os.getcwd() + '\\Models\\model3.keras')
+        self.__model1 = keras.models.load_model(os.getcwd() + '\\Models\\model1.keras')
+        self.__model2 = keras.models.load_model(os.getcwd() + '\\Models\\model2.keras')
+        self.__model3 = keras.models.load_model(os.getcwd() + '\\Models\\model3.keras')
 
         # Load scalers
         self.__scalers = []
@@ -42,12 +42,8 @@ class predictor:
         return self.__last24_frame
 
 if __name__=='__main__':
-    import sklearn.preprocessing # for preprocessing
+    from tensorflow import keras # ML platform
     import numpy as np # linear algebra
-    import pandas as pd # data processing
-    import matplotlib # data visualization
-    import matplotlib.pyplot as plt # data visualization
-    import keras # ML platform
     import os # operating system
     import joblib # save and load preprocessing scalers
 
