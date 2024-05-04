@@ -1,0 +1,2 @@
+class PowerException(Exception):
+    pass

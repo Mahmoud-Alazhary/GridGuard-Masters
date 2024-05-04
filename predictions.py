@@ -1,4 +1,4 @@
-
+from common_imports import *
 class predictor:
     def __init__(self):
         # Scaled inputs for the last 24 hours
@@ -55,11 +55,7 @@ class predictor:
         return self.__last24_frame
 
 if __name__=='__main__':
-    from tensorflow import keras # ML platform
-    import numpy as np # linear algebra
-    import os # operating system
-    import joblib # save and load preprocessing scalers
-
+    
     wizard=predictor()
     frame=wizard.get_initial_frame()
     

@@ -16,6 +16,9 @@ class TIME_STAMP(object):
         self.__datetime_obj += datetime.timedelta(hours=hrs)
     def remove_hours(self,hrs):
         self.__datetime_obj -= datetime.timedelta(hours=hrs)
+    def __str__(self):
+        return (f'''{self.to_stamp_string()}'''.replace(" "*4, ""))
+
 if __name__=='__main__':
     
     ts=TIME_STAMP("2019/12/29 23")
