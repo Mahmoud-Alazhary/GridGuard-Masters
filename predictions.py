@@ -38,6 +38,19 @@ class predictor:
                     for i in range(7):
                             predicted[i] = self.__scalers[i].inverse_transform(predicted[i].reshape(-1, 1)).reshape(predicted.shape[1])
                     return predicted.transpose()
+    
+    def predict_next_hour_load(self,inputs):
+        '''Predicts the Next Hour Load according to given last 24 inputs=>shape:(1 7 24)
+            returns np array of shape(1) float32 load value
+        '''
+        return self.predict(1,inputs)[0]
+    
+    def predict_next_hour_inputs(self,inputs):
+        '''Predicts the Next Hour input variables according to given last 24 inputs=>shape:(1 7 24)
+            returns float32 (7) inputs np array
+        '''
+        return self.predict(3,inputs)
+    
     def get_initial_frame(self):
         return self.__last24_frame
 
