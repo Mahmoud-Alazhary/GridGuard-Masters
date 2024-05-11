@@ -13,12 +13,13 @@ Interactive visualization: Explore predicted load curves through an intuitive gr
 
 ## Key Features:
 
-Machine learning-powered load forecasting: Leverages powerful machine learning techniques to predict future electrical loads with high accuracy.
-Interactive GUI:
-Start/Pause/Resume buttons: Control the visualization of the predicted load curve.
-Interactive graph: Point and click on any part of the curve to view the corresponding time and expected load values.
-Visualization: Generates clear and informative graphs of predicted load curves.
-Getting Started
+### Interactive GUI with Real-time Live Plotting (Hourly Predictions)
+
+The system offers an interactive graphical user interface (GUI) that provides real-time updates to the predicted load curve, specifically designed for hour-by-hour predictions. This allows you to visualize the evolving forecast in hourly increments.
+
+- **Granular Insights:** View detailed predictions for each hour, enabling a deeper understanding of upcoming energy demand patterns.
+
+## Getting Started
 
 This system requires Python 3.11 or higher and several libraries. We recommend using a virtual environment for managing dependencies:
 
@@ -58,5 +59,7 @@ Evaluation Metrics: We used mean squared error for accuracy
 ## Future Enhancements
 
 Generator Recommendation: Integrate generator capabilities with load forecasts to recommend the most efficient configuration for power generation. (This functionality is planned for a future release.)
+
 Advanced Visualization Features: Enhance visualization options for deeper insights into predicted loads (e.g., zooming, panning).
+
 Real-time Integration: Explore the possibility of integrating with real-time data streams for more dynamic predictions.
