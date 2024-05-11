@@ -1,7 +1,7 @@
-![Python](https://img.shields.io/badge/python-3-blue?style=flat-square)
-![PyQt](https://img.shields.io/badge/PyQt-6-orange?style=flat-square)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2-orange?style=flat-square)
-![C++](https://img.shields.io/badge/C%2B%2B-latest-blue?style=flat-square)
+![Python](https://img.shields.io/badge/python-3.11-brightgreen?style=flat)
+![PyQt](https://img.shields.io/badge/PyQt-6-orange?style=flat)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.16.1-purple?style=flat)
+![C++](https://img.shields.io/badge/C%2B%2B-latest-blue?style=flat)
 
 # Smart Load Forecasting System with Interactive GUI
 
