@@ -6,7 +6,7 @@ Improve load forecasting accuracy: Reduce energy waste and optimize grid managem
 Data-driven load insights: Gain valuable insights into future energy requirements through accurate predictions.
 Interactive visualization: Explore predicted load curves through an intuitive graphical user interface (GUI).
 
-Key Features:
+## Key Features:
 
 Machine learning-powered load forecasting: Leverages powerful machine learning techniques to predict future electrical loads with high accuracy.
 Interactive GUI:
@@ -17,21 +17,25 @@ Getting Started
 
 This system requires Python 3.11 or higher and several libraries. We recommend using a virtual environment for managing dependencies:
 
-Bash
+### Bash
+```
 python -m venv env
 source env/bin/activate  # Windows: env\Scripts\activate
 pip install -r requirements.txt
+```
 
-Usage:
+## Usage:
 
 Run the following command to launch the GUI:
 
-Bash
+### Bash
+```
 python main.py
+```
 
 This will open a window with the predicted load curve displayed.
 
-Interactive Features:
+## Interactive Features:
 
 Start Button: Initiates the visualization of the predicted load curve.
 Pause Button: Temporarily pauses the animation of the load curve.
@@ -42,11 +46,11 @@ Model Details (Optional)
 Model Architecture: LSTM for time series forecasting
 Evaluation Metrics: We used mean squared error for accuracy
 
-Results and Visualization
+## Results and Visualization
 
 [Will add some images]
 
-Future Enhancements
+## Future Enhancements
 
 Generator Recommendation: Integrate generator capabilities with load forecasts to recommend the most efficient configuration for power generation. (This functionality is planned for a future release.)
 Advanced Visualization Features: Enhance visualization options for deeper insights into predicted loads (e.g., zooming, panning).
