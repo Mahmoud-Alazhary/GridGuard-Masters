@@ -1,4 +1,4 @@
-![Python 3.11]([https://img.shields.io/badge/python-3.8-blue?style=flat-square](https://img.shields.io/badge/Python-yellow?logo=python))
+![Python 3.8]([https://img.shields.io/badge/python-3.8-blue?style=flat-square](https://img.shields.io/badge/Python-yellow?logo=python))
 # Smart Load Forecasting System with Interactive GUI
 
 This project is a machine learning-based system that addresses the challenge of accurately predicting electrical loads, helping energy providers and facility managers:
