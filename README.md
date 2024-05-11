@@ -44,12 +44,15 @@ This will open a window with the predicted load curve displayed.
 ## Interactive Features:
 
 Start Button: Initiates the visualization of the predicted load curve.
+
 Pause Button: Temporarily pauses the animation of the load curve.
+
 Resume Button: Resumes the animation after pausing.
+
 Interactive Graph: Clicking on any point on the graph displays the corresponding time and expected load value.
-Model Details (Optional)
 
 Model Architecture: LSTM for time series forecasting
+
 Evaluation Metrics: We used mean squared error for accuracy
 
 ## Results and Visualization
