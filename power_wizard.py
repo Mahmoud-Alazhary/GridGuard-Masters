@@ -28,19 +28,20 @@ class PowerPredictor():
     def get_next_cell(self):
         load=self.get_next_hour_load()
         new_inputs=self.get_next_hour_inputs()
-        #shift all cells to left
-        for i in range(self.__frame_size-1):
-            self.__frame[i]=self.__frame[i+1]
-        #write new_inputs to the end of the frame ,maintaining its size
+       
         
-        self.__frame[self.__frame_size-1]=np.expand_dims(new_inputs, axis=-1)
+        #write new_inputs to the end of the frame ,maintaining its size
+        self.__frame=np.append(self.__frame,new_inputs.reshape((1,7,1)),axis=0)
+        self.__frame=self.__frame[1:,:,:]
+        #print(self.__frame.shape)
+        #print(self.__frame[self.__frame_size-1],'||',np.expand_dims(new_inputs, axis=-1))
         #update l,r ts pointers
         self.__r_ts.add_hours(1)
         self.__l_ts.add_hours(1)
         #build result
         
         new_inputs[0][0]=load[0]#highet accuracy
-        return self.build_cell(new_inputs)
+        return (self.__r_ts,self.build_cell(new_inputs))
     def print_pointers(self):
         print(self.__l_ts,'to',self.__r_ts)
         
@@ -54,8 +55,13 @@ class PowerPredictor():
 if __name__=='__main__':
     wizard=PowerPredictor()
     #show current left,right pointers ,for testing..
-    for i in range(3):
-        wizard.print_pointers()
+    
+    lst=[]
+    for i in range(100):
+        
         #get next
         res=wizard.get_next_cell()
-        print(res)
+        
+        lst.append(res[1]['Load'])
+    print(lst)
+    
