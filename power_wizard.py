@@ -2,6 +2,7 @@ from predictions import predictor
 from time_stamps import *
 from power_exception import PowerException as PE
 from common_imports import *
+import pandas as pd
 class PowerPredictor():
     '''Class to wrap lower-level modules to provide more and simple calculations
         and continous predictions
@@ -12,13 +13,19 @@ class PowerPredictor():
                                 ,'Temperature(C)','Wind direction(deg)','Wind Speed(kmh)']
     __frame_size=24
     __in_variables_size=len(frame_input_variables)
-    def __init__(self,starting_time:str = "2019/12/29 23"):
+    def __init__(self,starting_time:str = "2019/1/5 14"):
         '''starting_time string format "%Y/%m/%d %H" e.g:"2019/12/29 23"'''
         self.__predictor=predictor()
-        self.__frame=self.__predictor.get_initial_frame().transpose()
+        #self.__frame=self.__predictor.get_initial_frame().transpose()
+        
         self.__r_ts=TIME_STAMP(starting_time)#left pointer timestamp,of last hour
         self.__l_ts=TIME_STAMP(starting_time)
         self.__l_ts.remove_hours(self.__frame_size-1)#right pointer timestamp of first hour in frame
+        self.__actual_row=15806
+        self.__actual_file=pd.read_excel("D:/programming/GridMasters/GridGuard-Masters/Files/Actuals.xlsx")
+        self.__frame=self.__actual_file.iloc[15783:15806+1, 1:]
+        self.__frame = self.__frame.to_numpy(dtype=float).reshape(24, 7, 1) 
+        
     def get_next_hour_load(self):
         res=self.__predictor.predict_next_hour_load(self.__frame.transpose())
         return res
@@ -27,7 +34,8 @@ class PowerPredictor():
         return res
     def get_next_cell(self):
         load=self.get_next_hour_load()
-        new_inputs=self.__frame[-1,:,:]
+        self.__actual_row+=1
+        new_inputs=self.__actual_file.iloc[self.__actual_row][1:].to_numpy(dtype=float).reshape(7,1)
        
         
         #write new_inputs to the end of the frame ,maintaining its size

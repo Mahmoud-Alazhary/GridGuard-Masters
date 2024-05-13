@@ -57,6 +57,7 @@ class Ui_MainWindow(object):
 "#frame_9 QPushButton:hover{\n"
 "background-color: rgb(120, 157, 186);\n"
 "}")
+        print('hamam')
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -188,7 +189,15 @@ class Ui_MainWindow(object):
         self.frame_11.setObjectName("frame_11")
         self.gridLayout = QtWidgets.QGridLayout(self.frame_11)
         self.gridLayout.setObjectName("gridLayout")
-        self.live_load_plot_widget = LivePlotWidget(parent=self.frame_11)
+
+        left_axis = LiveAxis("left", axisPen="white", textPen="white")
+        bottom_axis = LiveAxis("bottom", axisPen="yellow", textPen="yellow", **{Axis.TICK_FORMAT: Axis.DATETIME})
+        print('zaki'*10)
+        self.live_load_plot_widget = LivePlotWidget(title="Demand vs Time",
+                         x_range_controller=LiveAxisRange(roll_on_tick=100, offset_left=30),
+                         y_range_controller=LiveAxisRange(fixed_range=[1000, 1500]), axisItems={'bottom': bottom_axis, 'left': left_axis},
+                                           labels={'bottom': ("Date"), 'left': ("Load (MW)")},parent=self.frame_11)
+       
         self.live_load_plot_widget.setObjectName("live_load_plot_widget")
         self.gridLayout.addWidget(self.live_load_plot_widget, 0, 0, 1, 1)
         self.verticalLayout_5.addWidget(self.frame_11)
@@ -534,8 +543,9 @@ class Ui_MainWindow(object):
         self.pushButton_9.setText(_translate("MainWindow", "Resume"))
         self.pushButton_8.setText(_translate("MainWindow", "Pause"))
 from pglive.sources.live_plot_widget import LivePlotWidget
-
-
+from pglive.sources.live_axis_range import LiveAxisRange
+from pglive.kwargs import Axis
+from pglive.sources.live_axis import LiveAxis
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

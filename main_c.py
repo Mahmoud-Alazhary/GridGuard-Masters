@@ -1,6 +1,7 @@
 
 
-from GUI import *
+from hmd_ui import *
+
 from math import sin
 from threads import *
 from time import sleep
@@ -25,13 +26,15 @@ class MainEditorWindow(QtWidgets.QMainWindow):
     
     def __init_plot(self):
         '''Initializes the Load live predictions Widget'''
+        print(1)
         live_plot=self.__ui.live_load_plot_widget
         live_plot.x_range_controller.crop_left_offset_to_data = True
+        print(2)
         plot_curve = LiveLinePlot()
         live_plot.addItem(plot_curve)
-        # DataConnector holding 600 points and plots @ 100Hz
+        # DataConnector holding 6000 points and plots @ 100Hz
         self.__plot_data_connector = DataConnector(plot_curve, max_points=6000, update_rate=100)
-        self.__data_thread=PredictionDataThread(connector=self.__plot_data_connector,cool_down=0.01)
+        self.__data_thread=PredictionDataThread(connector=self.__plot_data_connector,cool_down=1)
         self.__data_thread.start()
     '''
     def init_ui_signals(self):

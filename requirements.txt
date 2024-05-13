@@ -2,3 +2,5 @@ pip3 install numpy==1.26.4
 pip3 install joblib==1.4.0
 pip3 install tensorflow==2.16.1
 pip3 install scikit-learn
+pip3 install pandas
+pip3 install PyQt6
