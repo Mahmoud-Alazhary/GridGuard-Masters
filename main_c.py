@@ -12,7 +12,8 @@ from pglive.sources.data_connector import DataConnector
 from pglive.sources.live_plot import LiveLinePlot
 from pglive.sources.live_plot_widget import LivePlotWidget
 #from pglive.sources.live_axis_range import LiveAxisRange
-
+from pglive.kwargs import LeadingLine
+from pyqtgraph import mkPen
 
 class MainEditorWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -31,6 +32,7 @@ class MainEditorWindow(QtWidgets.QMainWindow):
         live_plot.x_range_controller.crop_left_offset_to_data = True
         print(2)
         plot_curve = LiveLinePlot()
+        plot_curve.set_leading_line(LeadingLine.VERTICAL, pen=mkPen("red"), text_axis=LeadingLine.AXIS_Y)
         live_plot.addItem(plot_curve)
         # DataConnector holding 6000 points and plots @ 100Hz
         self.__plot_data_connector = DataConnector(plot_curve, max_points=6000, update_rate=100)

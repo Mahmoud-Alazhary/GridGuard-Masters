@@ -57,7 +57,7 @@ class Ui_MainWindow(object):
 "#frame_9 QPushButton:hover{\n"
 "background-color: rgb(120, 157, 186);\n"
 "}")
-        print('hamam')
+        
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -192,7 +192,7 @@ class Ui_MainWindow(object):
 
         left_axis = LiveAxis("left", axisPen="white", textPen="white")
         bottom_axis = LiveAxis("bottom", axisPen="yellow", textPen="yellow", **{Axis.TICK_FORMAT: Axis.DATETIME})
-        print('zaki'*10)
+        
         self.live_load_plot_widget = LivePlotWidget(title="Demand vs Time",
                          x_range_controller=LiveAxisRange(roll_on_tick=100, offset_left=30),
                          y_range_controller=LiveAxisRange(fixed_range=[1000, 1500]), axisItems={'bottom': bottom_axis, 'left': left_axis},
