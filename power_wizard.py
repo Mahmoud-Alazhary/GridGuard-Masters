@@ -27,7 +27,7 @@ class PowerPredictor():
         return res
     def get_next_cell(self):
         load=self.get_next_hour_load()
-        new_inputs=self.get_next_hour_inputs()
+        new_inputs=self.__frame[-1,:,:]
        
         
         #write new_inputs to the end of the frame ,maintaining its size
@@ -50,7 +50,7 @@ class PowerPredictor():
         
         res={}
         for i in range(self.__in_variables_size):
-            res.update({self.frame_input_variables[i]:cell_data[0][i]})
+            res.update({self.frame_input_variables[i]:cell_data[i][0]})
         return res
 if __name__=='__main__':
     wizard=PowerPredictor()

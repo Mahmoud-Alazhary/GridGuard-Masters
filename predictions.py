@@ -26,6 +26,7 @@ class predictor:
     # model3 -> the next hour inputs -> (None, 7)
     '''
     def predict(self,model_number:int, inputs):
+            inputs = np.copy(inputs)
             for j in range(inputs.shape[0]):
                     for i in range(7):
                             inputs[j][i] = self.__scalers[i].transform(inputs[j][i].reshape(-1, 1)).reshape(inputs.shape[2])
