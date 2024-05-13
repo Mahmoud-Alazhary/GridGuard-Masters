@@ -87,7 +87,7 @@ def plot_heat_array(start_date,data,offset=1,color_scale='Hot'):
         colorscale=color_scale))
 
     fig.update_layout(
-        title='Predicted Load Demand in Kw',
+        title='Predicted Load Demand in Mw',
         xaxis_nticks=36)
 
     fig.show()
