@@ -60,9 +60,42 @@ class PowerPredictor():
         for i in range(self.__in_variables_size):
             res.update({self.frame_input_variables[i]:cell_data[i][0]})
         return res
+    def get_r_datetime(self):
+        return self.__r_ts.get_datetime()
+def build_heat_array(data:list)->list:
+    '''Builds array of (24 hrs,(number of days)dates) '''
+    
+    days_num=int(len(data)/24)
+    result_arr=[[]*days_num]*24
+    #print(result_arr)
+    for i in range(len(data)):
+        if i//24>=days_num:
+            break
+        
+        result_arr[i%24].append(data[i])
+    return result_arr
+def plot_heat_array(start_date,data,offset=1,color_scale='Hot'):
+    import plotly.graph_objects as go
+    arr=build_heat_array(data)
+    hours=[str((start_date.hour+i)%24) for i in range(1,25)]
+    zako=start_date+datetime.timedelta(hours=1)
+    dates=zako+np.arange(len(data)//24)*datetime.timedelta(days=1)
+    fig = go.Figure(data=go.Heatmap(
+        z=arr,
+        x=dates,
+        y=hours,
+        colorscale=color_scale))
+
+    fig.update_layout(
+        title='Predicted Load Demand in Kw',
+        xaxis_nticks=36)
+
+    fig.show()
 if __name__=='__main__':
     wizard=PowerPredictor()
-    #show current left,right pointers ,for testing..
+    
+    
+    start_date=wizard.get_r_datetime()
     
     lst=[]
     for i in range(100):
@@ -71,5 +104,4 @@ if __name__=='__main__':
         res=wizard.get_next_cell()
         
         lst.append(res[1]['Load'])
-    print(lst)
-    
+    plot_heat_array(start_date,lst)

@@ -20,6 +20,8 @@ class TIME_STAMP(object):
         return (f'''{self.to_stamp_string()}'''.replace(" "*4, ""))
     def to_epoch(self):
         return self.__datetime_obj.timestamp()
+    def get_datetime(self):
+        return self.__datetime_obj
 if __name__=='__main__':
     
     ts=TIME_STAMP("2019/12/29 23")

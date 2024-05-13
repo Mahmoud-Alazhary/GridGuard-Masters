@@ -14,7 +14,7 @@ from pglive.sources.live_plot_widget import LivePlotWidget
 #from pglive.sources.live_axis_range import LiveAxisRange
 from pglive.kwargs import LeadingLine
 from pyqtgraph import mkPen
-
+import enlopy as el
 class MainEditorWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
@@ -37,13 +37,16 @@ class MainEditorWindow(QtWidgets.QMainWindow):
         live_plot.addItem(plot_curve)
         # DataConnector holding 6000 points and plots @ 100Hz
         self.__plot_data_connector = DataConnector(plot_curve, max_points=6000, update_rate=100)
-        self.__data_thread=PredictionDataThread(connector=self.__plot_data_connector,cool_down=1)
+        self.__data_thread=PredictionDataThread(connector=self.__plot_data_connector,cool_down=0.1)
         self.__data_thread.predicted_p.connect(self.on_data_recieved)
         self.__data_thread.start()
     
     def __init_ui_signals(self):
         self.__ui.pushButton_9.clicked.connect(self.__resume_plotting)
         self.__ui.pushButton_8.clicked.connect(self.__pause_plotting)
+        self.__ui.heatmap_button.clicked.connect(self.__do_heatmap)
+    def __do_heatmap(self):
+        self.__data_thread.do_heat_map()
     def __resume_plotting(self):
         self.__data_thread.resume()
     def __pause_plotting(self):

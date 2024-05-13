@@ -57,7 +57,6 @@ class Ui_MainWindow(object):
 "#frame_9 QPushButton:hover{\n"
 "background-color: rgb(120, 157, 186);\n"
 "}")
-        
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -189,7 +188,6 @@ class Ui_MainWindow(object):
         self.frame_11.setObjectName("frame_11")
         self.gridLayout = QtWidgets.QGridLayout(self.frame_11)
         self.gridLayout.setObjectName("gridLayout")
-
         left_axis = LiveAxis("left", axisPen="white", textPen="white")
         bottom_axis = LiveAxis("bottom", axisPen="yellow", textPen="yellow", **{Axis.TICK_FORMAT: Axis.DATETIME})
         
@@ -488,6 +486,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.setObjectName("verticalLayout_19")
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.heatmap_button = QtWidgets.QPushButton(parent=self.frame_4)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("D:/programming/GridMasters/GridGuard-Masters/resources/business.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.heatmap_button.setIcon(icon4)
+        self.heatmap_button.setObjectName("heatmap_button")
+        self.horizontalLayout_8.addWidget(self.heatmap_button)
         self.pushButton_9 = QtWidgets.QPushButton(parent=self.frame_4)
         self.pushButton_9.setMaximumSize(QtCore.QSize(16777215, 39))
         font = QtGui.QFont()
@@ -496,9 +500,9 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_9.setFont(font)
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("resources/icons8-resume-button-64.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_9.setIcon(icon4)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap("resources/icons8-resume-button-64.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_9.setIcon(icon5)
         self.pushButton_9.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_9.setObjectName("pushButton_9")
         self.horizontalLayout_8.addWidget(self.pushButton_9)
@@ -510,9 +514,9 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_8.setFont(font)
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("resources/icons8-pause-button-64.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_8.setIcon(icon5)
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap("resources/icons8-pause-button-64.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_8.setIcon(icon6)
         self.pushButton_8.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_8.setObjectName("pushButton_8")
         self.horizontalLayout_8.addWidget(self.pushButton_8)
@@ -540,12 +544,15 @@ class Ui_MainWindow(object):
         self.label_10.setText(_translate("MainWindow", "TextLabel"))
         self.label_11.setText(_translate("MainWindow", "Relative True Error:"))
         self.label_12.setText(_translate("MainWindow", "TextLabel"))
+        self.heatmap_button.setText(_translate("MainWindow", "HeatMap"))
         self.pushButton_9.setText(_translate("MainWindow", "Resume"))
         self.pushButton_8.setText(_translate("MainWindow", "Pause"))
 from pglive.sources.live_plot_widget import LivePlotWidget
 from pglive.sources.live_axis_range import LiveAxisRange
 from pglive.kwargs import Axis
 from pglive.sources.live_axis import LiveAxis
+
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

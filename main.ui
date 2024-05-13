@@ -834,6 +834,17 @@ background-color: rgb(120, 157, 186);
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_8">
             <item>
+             <widget class="QPushButton" name="heatmap_button">
+              <property name="text">
+               <string>HeatMap</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>resources/business.png</normaloff>resources/business.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="pushButton_9">
               <property name="maximumSize">
                <size>
