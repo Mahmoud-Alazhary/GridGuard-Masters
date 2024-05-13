@@ -195,7 +195,7 @@ class Ui_MainWindow(object):
         
         self.live_load_plot_widget = LivePlotWidget(title="Demand vs Time",
                          x_range_controller=LiveAxisRange(roll_on_tick=100, offset_left=30),
-                         y_range_controller=LiveAxisRange(fixed_range=[1000, 1500]), axisItems={'bottom': bottom_axis, 'left': left_axis},
+                         y_range_controller=LiveAxisRange(fixed_range=[900, 1300]), axisItems={'bottom': bottom_axis, 'left': left_axis},
                                            labels={'bottom': ("Date"), 'left': ("Load (MW)")},parent=self.frame_11)
        
         self.live_load_plot_widget.setObjectName("live_load_plot_widget")

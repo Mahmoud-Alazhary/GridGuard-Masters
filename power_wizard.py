@@ -36,7 +36,7 @@ class PowerPredictor():
         load=self.get_next_hour_load()
         self.__actual_row+=1
         new_inputs=self.__actual_file.iloc[self.__actual_row][1:].to_numpy(dtype=float).reshape(7,1)
-       
+        actual_load=new_inputs[0][0]
         
         #write new_inputs to the end of the frame ,maintaining its size
         self.__frame=np.append(self.__frame,new_inputs.reshape((1,7,1)),axis=0)
@@ -49,7 +49,7 @@ class PowerPredictor():
         #build result
         
         new_inputs[0][0]=load[0]#highet accuracy
-        return (self.__r_ts,self.build_cell(new_inputs))
+        return (self.__r_ts,self.build_cell(new_inputs),actual_load)
     def print_pointers(self):
         print(self.__l_ts,'to',self.__r_ts)
         
