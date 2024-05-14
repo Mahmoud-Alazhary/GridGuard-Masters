@@ -2,7 +2,7 @@
 
 from hmd_ui import *
 
-from math import sin
+
 from threads import *
 from time import sleep
 from power_wizard import *
@@ -14,7 +14,7 @@ from pglive.sources.live_plot_widget import LivePlotWidget
 #from pglive.sources.live_axis_range import LiveAxisRange
 from pglive.kwargs import LeadingLine
 from pyqtgraph import mkPen
-import enlopy as el
+
 class MainEditorWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()

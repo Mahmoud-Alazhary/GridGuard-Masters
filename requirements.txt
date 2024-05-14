@@ -4,3 +4,4 @@ pip3 install tensorflow==2.16.1
 pip3 install scikit-learn
 pip3 install pandas
 pip3 install PyQt6
+pip3 install plotly
