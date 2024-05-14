@@ -75,7 +75,7 @@ def build_heat_array(data:list)->list:
         result_arr[i%24].append(data[i])
     print(result_arr)
     return result_arr
-def plot_heat_array(start_date,data,offset=1,color_scale='Blues'):
+def plot_heat_array(start_date,data,offset=1,color_scale='Reds'):
     import plotly.graph_objects as go
     arr=build_heat_array(data)
     hours=[str((start_date.hour+i)%24) for i in range(1,25)]
