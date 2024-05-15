@@ -14,23 +14,30 @@ from pglive.sources.live_plot_widget import LivePlotWidget
 # from pglive.sources.live_axis_range import LiveAxisRange
 from pglive.kwargs import LeadingLine
 from pyqtgraph import mkPen
-from PyQt5.QtCore import Qt
+from PyQt6.QtCore import Qt
 
 
 class MainEditorWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-
+        self.__is_maximized = True
         self.__ui = Ui_MainWindow()
         self.__ui.setupUi(self)
         self.__init_ui_signals()
         self.__init_plot()
-        self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
+        self.setWindowFlags(self.windowFlags() |
+                            Qt.WindowType.FramelessWindowHint)
         self.__ui.pushButton_13.clicked.connect(self.close)
-        self.__ui.pushButton_12.clicked.connect(self.toggle_maximized)
-        self.__ui.pushButton_11.clicked.connect(self.toggle_minimized)
+        self.__ui.pushButton_12.clicked.connect(self.__minimzax_window)
+        self.__ui.pushButton_11.clicked.connect(self.showMinimized)
 
         # self.init_ui_signals()
+    def __minimzax_window(self):
+        if self.__is_maximized:
+            self.showNormal()
+        else:
+            self.showMaximized()
+        self.__is_maximized ^= 1
 
     def __init_plot(self):
         '''Initializes the Load live predictions Widget'''
@@ -44,7 +51,7 @@ class MainEditorWindow(QtWidgets.QMainWindow):
         live_plot.addItem(plot_curve)
         # DataConnector holding 6000 points and plots @ 100Hz
         self.__plot_data_connector = DataConnector(
-            plot_curve, max_points=6000, update_rate=100)
+            plot_curve, max_points=60000, update_rate=100)
         self.__data_thread = PredictionDataThread(
             connector=self.__plot_data_connector, cool_down=0.1)
         self.__data_thread.predicted_p.connect(self.on_data_recieved)
