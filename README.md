@@ -64,8 +64,8 @@ Evaluation Metrics: We used mean squared error for accuracy
     
 ## Results and Visualization
 
-![Main GUI](https://github.com/Mahmoud-Alazhary/GridGuard-Masters/blob/main/Screenshot%202024-05-18%20180839.png)
-![Heat Map visualization](https://github.com/Mahmoud-Alazhary/GridGuard-Masters/blob/main/Screenshot%202024-05-18%20180852.png)
+![Main GUI](https://github.com/Mahmoud-Alazhary/GridGuard-Masters/blob/main/Main%20GUI%20feature.png)
+![Heat Map visualization](https://github.com/Mahmoud-Alazhary/GridGuard-Masters/blob/main/Main%20heat%20map%20feature.png)
 
 ## Future Enhancements
 
