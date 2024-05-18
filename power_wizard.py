@@ -27,8 +27,7 @@ class PowerPredictor():
         # right pointer timestamp of first hour in frame
         self.__l_ts.remove_hours(self.__frame_size-1)
         self.__actual_row = 15806
-        self.__actual_file = pd.read_excel(
-            "D:/programming/GridMasters/GridGuard-Masters/Files/Actuals.xlsx")
+        self.__actual_file = pd.read_excel(OSMango.convert_to_absolute_path("Files/Actuals.xlsx"))
         self.__frame = self.__actual_file.iloc[15783:15806+1, 1:]
         self.__frame = self.__frame.to_numpy(dtype=float).reshape(24, 7, 1)
 
@@ -81,7 +80,7 @@ def build_heat_array(data: list) -> list:
     '''Builds array of (24 hrs,(number of days)dates) '''
 
     days_num = int(len(data)/24)
-    result_arr = [[]*days_num]*24
+    result_arr = [[] for _ in range(24)]
     # print(result_arr)
     for i in range(len(data)):
         if i//24 >= days_num:
@@ -94,10 +93,23 @@ def build_heat_array(data: list) -> list:
 
 def plot_heat_array(start_date, data, offset=1, color_scale='Reds'):
     import plotly.graph_objects as go
+    
+    hours = [str(i) for i in range(0, 24)]
+    start_date+=datetime.timedelta(hours=1)
+    zako = start_date
+    if zako !=datetime.datetime(zako.year, zako.month, zako.day):
+        zako = datetime.datetime(zako.year, zako.month, zako.day+1)
+
+    # Calculate the number of hours to remove from the prefix
+    
+    hours_to_remove = int((zako - start_date).total_seconds() // 3600)
+    
+    # Remove the prefix from the data
+    data = data[hours_to_remove:]
+
     arr = build_heat_array(data)
-    hours = [str((start_date.hour+i) % 24) for i in range(1, 25)]
-    zako = start_date+datetime.timedelta(hours=1)
     dates = zako+np.arange(len(data)//24)*datetime.timedelta(days=1)
+
     fig = go.Figure(data=go.Heatmap(
         z=arr,
         x=dates,
@@ -118,13 +130,13 @@ if __name__ == '__main__':
     start_date = wizard.get_r_datetime()
 
     lst = []
-    for i in range(48):
+    for i in range(100):
 
         # get next
         res = wizard.get_next_cell()
 
         lst.append(res[1]['Load'])
-    res = build_heat_array(lst)
-    print(len(res))
+    #res = build_heat_array(lst)
+    #print(len(res))
     # pprint(res)
-    # plot_heat_array(start_date,lst)
+    plot_heat_array(start_date,lst)

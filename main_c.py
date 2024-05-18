@@ -15,6 +15,7 @@ from pglive.sources.live_plot_widget import LivePlotWidget
 from pglive.kwargs import LeadingLine
 from pyqtgraph import mkPen
 from PyQt6.QtCore import Qt
+#import logger_GUI
 
 
 class MainEditorWindow(QtWidgets.QMainWindow):

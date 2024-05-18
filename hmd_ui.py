@@ -11,7 +11,7 @@ from pglive.sources.live_axis import LiveAxis
 from pglive.kwargs import Axis
 from pglive.sources.live_axis_range import LiveAxisRange
 from PyQt6 import QtCore, QtGui, QtWidgets
-
+from OSMango import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -526,7 +526,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.heatmap_button = QtWidgets.QPushButton(parent=self.frame_4)
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("D:/programming/GridMasters/GridGuard-Masters/resources/business.png"),
+        icon4.addPixmap(QtGui.QPixmap(OSMango.convert_to_absolute_path("resources/business.png")),
                         QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.heatmap_button.setIcon(icon4)
         self.heatmap_button.setObjectName("heatmap_button")
